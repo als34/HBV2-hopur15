@@ -8,5 +8,10 @@
 		<body>
 			<h1>Sign Up</h1>
 			Þettta VIIIIRKAR!!!
+			<form method='POST' action=''> {% csrf_token %}
+				{{form.as_p}}
+				
+				<input type='submit'>
+			</form>
 		</body>
 	</html>
