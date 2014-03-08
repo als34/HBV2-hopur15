@@ -86,3 +86,11 @@ STATIC_URL = '/static/'
 #Template stadsetning
 
 TEMPLATE_DIRS = (os.path.join(os.path.dirname(BASE_DIR), "smartLabelS", "static", "templates"), )
+
+if DEBUG:
+    MEDIA_URL = '/media/'
+    STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "smartLabelS", "static", "static-only")
+    MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "smartLabelS", "static", "media") 
+    STATICFILES_DIRS = (
+        os.path.join(os.path.dirname(BASE_DIR), "smartLabelS", "static", "static"),                
+    )
