@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     url(r'^$', 'test_smartLabelS.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^thank-you/$', 'test_smartLabelS.views.thankyou', name='thankyou'),
+    url(r'^learn-more/$', 'test_smartLabelS.views.learnmore', name='learnmore'),
     url(r'^admin/', include(admin.site.urls)),
 )
 

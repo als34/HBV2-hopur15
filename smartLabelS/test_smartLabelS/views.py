@@ -13,12 +13,11 @@ def home(request):
         save_it = form.save(commit=False)
         save_it.save()
         messages.success(request, 'Thank you for joining, we will be in touchs')
-        return HttpResponseRedirect('/thank-you/')
-               
-    
+        return HttpResponseRedirect('/thank-you/')                   
     return render_to_response("signup.html", locals(), context_instance=RequestContext(request))
 
 def thankyou(request):
-    
-
     return render_to_response("thankyou.html", locals(), context_instance=RequestContext(request))
+
+def learnmore(request):
+    return render_to_response("learnmore.html", locals(), context_instance=RequestContext(request))

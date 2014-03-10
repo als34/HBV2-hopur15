@@ -4,22 +4,33 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Welcom to SmartLabel</h1>
-        <p>This page will help you to follow your product around the world.</p>
-        <br />
-        <p>Please sign in to see your products </p>
-        <!-- <p><a class="btn btn-primary btn-lg" role="button">Please sign in to see your products &raquo;</a></p>-->
+        <h1>Welome to Smart Labels Central</h1>
+        <p>Smart Labels are the perfect solution for ..</p>
+        <p><a class="btn btn-primary btn-lg" role="button" href="learn-more">Learn more &raquo;</a></p>
       </div>
     </div>
 
 {% endblock %}
 
 {% block content %}
-			<h1>Sign Up</h1>
-			
+		<div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+       </div>
+        <div class="col-md-4">
+          <h2>Sign Up</h2>
+			<p>Sign up for SmartLabel service</p>
 			<form method='POST' action=''> {% csrf_token %}
 				{{form.as_p}}
 				
-				<input type='submit' class='btn btn-success btn-lg' label='Add user'>
+				<input type='submit' class='btn btn-success btn-lg' value='Add user'>
 			</form>
+        </div>
+			
 {% endblock %}
