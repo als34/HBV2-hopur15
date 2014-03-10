@@ -10,7 +10,7 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'test_smartLabelS.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-
+    url(r'^thank-you/$', 'test_smartLabelS.views.thankyou', name='thankyou'),
     url(r'^admin/', include(admin.site.urls)),
 )
 
