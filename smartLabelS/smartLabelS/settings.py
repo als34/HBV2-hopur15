@@ -12,6 +12,20 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+#Nota til ad senda tolvupost, gmail eda google apps
+"""
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'eitthvad_mail@gmail.com'
+EMAIL_HOST_PASSWORD = 'lykilord'
+EMAIL_PORT = 587
+"""
+#Nota hér gamla smtp í gegn um rhi.hi.is
+EMAIL_USE_TLS = False
+EMAIL_HOST = 'smtp.rhi.hi.is'
+EMAIL_HOST_USER = 'eitthvad_mail@hi.com'
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 25
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
