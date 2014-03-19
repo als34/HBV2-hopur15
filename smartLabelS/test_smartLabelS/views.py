@@ -18,7 +18,7 @@ def home(request):
         save_it.save()
         #send_mail(ubject, message, from_email, to_list, fail_silently=True)
         subject = 'Thank you for signing up to Smart Labels Central'
-        message = 'Welcome to smart labels central website where you can buy smart labels and track them in realtime'
+        message = 'Welcome ' + save_it.first_name + ' to smart labels central website where you can buy smart labels and track them in realtime'
         from_email = settings.EMAIL_HOST_USER
         to_list = [save_it.email, settings.EMAIL_HOST_USER]
         

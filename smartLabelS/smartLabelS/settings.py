@@ -20,7 +20,7 @@ EMAIL_HOST_USER = 'eitthvad_mail@gmail.com'
 EMAIL_HOST_PASSWORD = 'lykilord'
 EMAIL_PORT = 587
 """
-#Nota hér gamla smtp í gegn um rhi.hi.is
+#Nota her gamla smtp i gegn um rhi.hi.is
 EMAIL_USE_TLS = False
 EMAIL_HOST = 'smtp.rhi.hi.is'
 EMAIL_HOST_USER = 'eitthvad_mail@hi.com'
