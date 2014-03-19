@@ -32,6 +32,9 @@ def home(request):
 def thankyou(request):
     return render_to_response("thankyou.html", locals(), context_instance=RequestContext(request))
 
+def testmap(request):
+    return render_to_response("testmap.html", locals(), context_instance=RequestContext(request))
+
 def learnmore(request):
     return render_to_response("learnmore.html", locals(), context_instance=RequestContext(request))
 
@@ -39,6 +42,9 @@ def login(request):
     c={}
     c.update(csrf(request))
     return render_to_response('login.html', c)
+
+
+    
 
 def auth_view(request):
     username = request.POST.get('username', '')
