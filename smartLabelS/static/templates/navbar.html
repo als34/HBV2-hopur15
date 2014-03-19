@@ -17,10 +17,10 @@
     
       <ul class="nav navbar-nav navbar-right">
         {% if request.user.is_authenticated %}
-        <li><a href="{% url 'loggedin' %}">Logged in</a></li>
+        <li><a href="{% url "loggedin" %}">Logged in</a></li>
         
         {% else %}
-        <li><a href="{% url 'login' %}">Log in</a></li>
+        <li><a href="{% url "login" %}">Log in</a></li>
         {% endif %}
         
       </ul>
