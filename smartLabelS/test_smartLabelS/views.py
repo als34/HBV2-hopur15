@@ -9,7 +9,7 @@ from django.core.context_processors import csrf
 
 # Create your views here.
 
-from .forms import SignUpForm#, GPSWidget
+from .forms import SignUpForm, CreateForm #, GPSWidget
 
 def home(request):
     
@@ -29,6 +29,17 @@ def home(request):
         messages.success(request, 'Thank you for joining, we will be in touch')
         return HttpResponseRedirect('/thank-you/')                   
     return render_to_response("signup.html", locals(), context_instance=RequestContext(request))
+
+def create(request):
+    
+    form1 = CreateForm(request.POST or None)
+    
+    if form1.is_valid():
+        save_it = form1.save(commit=False)
+        save_it.save()
+        
+        
+    return render_to_response("create.html")
 
 def thankyou(request):
     return render_to_response("thankyou.html", locals(), context_instance=RequestContext(request))
@@ -75,5 +86,4 @@ def logout(request):
 def choose(request):
     return render_to_response("choose.html")
 
-def create(request):
-    return render_to_response("create.html")
+

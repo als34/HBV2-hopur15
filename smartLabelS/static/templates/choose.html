@@ -1,6 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Velja ferd</h2>
-
+<h2>Select shipment:</h2>
+<form action="/testmap/" method= "post">{% csrf_token %}
+	<select>
+		<option name="chose" value ="1">Volvo</option>
+		<option name="chose" value ="2">Saab</option>
+		<option name="chose" value ="3">Mercedes</option>
+		<option name="chose" value ="4">Audi</option>
+	</select>
+	
+	<!-- <input type="submit" value="testmap" /> -->
+</form>
+<br />
+<br />
+<p><a class="btn btn-primary btn-lg" role="button" href="{% url "testmap" %}">Syna kort &raquo;</a></p>
 {% endblock %}

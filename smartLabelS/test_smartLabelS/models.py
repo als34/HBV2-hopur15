@@ -17,7 +17,15 @@ class SignUp(models.Model):
     
     
     
+class CreateF(models.Model):
+    shipment_nr = models.CharField(max_length= 30, null=False, blank=False)
+    first_nr = models.CharField(max_length = 30, null=False, blank = False)
+    quantity = models.CharField(max_length =10, null =False, blank = False)
+    timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated = models.DateTimeField(auto_now_add=False, auto_now=True)
     
+    def __unicode__ (self):
+        return '%s %s %s ' % (self.shipment_nr, self.first_nr, self.quantity)
     
 
 class Question(models.Model):
