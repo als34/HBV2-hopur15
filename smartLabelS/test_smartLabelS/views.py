@@ -10,6 +10,7 @@ from django.core.context_processors import csrf
 # Create your views here.
 
 from .forms import SignUpForm, CreateForm #, GPSWidget
+from .dbwork import *
 
 def home(request):
     
@@ -47,7 +48,9 @@ def thankyou(request):
 def testmap(request):
     #gpswidget = GPSWidget(request.POST or None)
     #Saekja GPS gogn i gagnagrunni og setja i test_path breytuna
-    test_path = "new google.maps.LatLng(37.772323, -122.214897),    new google.maps.LatLng(21.291982, -157.821856),    new google.maps.LatLng(-18.142599, 178.431),    new google.maps.LatLng(-27.46758, 153.027892)"
+    #test_path = "new google.maps.LatLng(37.772323, -122.214897),    new google.maps.LatLng(21.291982, -157.821856),    new google.maps.LatLng(-18.142599, 178.431),    new google.maps.LatLng(-27.46758, 153.027892)"
+    db = dbwork()
+    test_path = db.saekja()
     
     return render_to_response("testmap.html", {'test_path' : test_path} )
 
