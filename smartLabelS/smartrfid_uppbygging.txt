@@ -1,0 +1,72 @@
+
+CREATE TABLE user(
+	user_id	INTEGER PRIMARY KEY,
+	user_name	TEXT,
+	user_phone	INTEGER
+);
+
+CREATE TABLE product(
+		product_id INTEGER PRIMARY KEY,
+		product_name	TEXT,
+		max_temp	INTEGER,
+		min_temp	INTEGER
+);
+
+CREATE TABLE sites(
+	site_id		INTEGER PRIMARY KEY,
+	site_name		TEXT
+);
+
+
+CREATE TABLE shipment(
+	shipment_id	INTEGER PRIMARY KEY,
+	product_id	INTEGER,
+	rfid_id_start	INTEGER,
+	rfid_id_end	INTEGER,
+	site_from		TEXT,
+	site_to		TEXT,
+	time_sent		TIMESTAMP,
+	
+	 FOREIGN KEY(product_id) REFERENCES product(product_id),
+	 FOREIGN KEY(site_from) REFERENCES sites(site_id),
+	 FOREIGN KEY(site_to) REFERENCES sites(site_id)
+
+);
+
+CREATE TABLE shipment_monitor(
+	shipment_id	INTEGER ,
+	timestamp	DATETIME,
+	temp		INTEGER,
+	loclong		REAL,
+	loclang		REAL,
+	leg_course	INTEGER,
+	
+	 FOREIGN KEY(shipment_id) REFERENCES shipment(shipment_id),
+	 PRIMARY KEY(shipment_id, timestamp)
+	
+);
+
+INSERT INTO user(user_id, user_name, user_phone) VALUES(1, "Herra Prufa1", 12345);
+INSERT INTO user(user_id, user_name, user_phone) VALUES(2, "Froken Prufa2", 12345);
+
+INSERT INTO product(product_id, product_name, max_temp, min_temp) VALUES(100, "Thorskur", 0, -100);
+INSERT INTO product(product_id, product_name, max_temp, min_temp) VALUES(101, "Isa", 0, -100);
+INSERT INTO product(product_id, product_name, max_temp, min_temp) VALUES(102, "Ufsi", 0, -100);
+
+INSERT INTO sites VALUES(1, "Reykjavik");
+INSERT INTO sites VALUES(2, "New York");
+INSERT INTO sites VALUES(3, "London");
+INSERT INTO sites VALUES(4, "Oslo");
+INSERT INTO sites VALUES(5, "Kobenhaun");
+
+INSERT INTO shipment(shipment_id, product_id, rfid_id_start, rfid_id_end, site_from, site_to, time_sent) 
+VALUES(1, 102, 1000, 1199, 1, 2, datetime('now'));
+INSERT INTO shipment(shipment_id, product_id, rfid_id_start, rfid_id_end, site_from, site_to, time_sent) 
+VALUES(2, 102, 1200, 1399, 1, 3, datetime('now'));
+
+INSERT INTO shipment_monitor VALUES(1, "2014-03-10 10:00:0.000", -18, 64.0, -21.0, 180);
+INSERT INTO shipment_monitor VALUES(1, "2014-03-10 10:01:0.000", -18, 64.01, -21.01, 180);
+INSERT INTO shipment_monitor VALUES(1, "2014-03-10 10:02:0.000", -18, 64.02, -21.02, 180);
+
+
+

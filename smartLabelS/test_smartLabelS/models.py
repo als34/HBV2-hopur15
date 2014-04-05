@@ -28,12 +28,44 @@ class CreateF(models.Model):
         return '%s %s %s ' % (self.shipment_nr, self.first_nr, self.quantity)
     
 
-class Question(models.Model):
-    question_text = models.CharField(max_length=200)
-    pub_date = models.DateTimeField('date published')
-
-
-class Choice(models.Model):
-    question = models.ForeignKey(Question)
-    choice_text = models.CharField(max_length=200)
-    votes = models.IntegerField(default=0)
+class Product(models.Model):
+    product_id = models.IntegerField()
+    product_name  = models.CharField(max_length=120, null=True, blank=True)
+    max_temp = models.IntegerField()
+    min_temp = models.IntegerField()
+    
+    def __unicode__ (self):
+        return smart_unicode(self.product_name)
+    
+class Sites(models.Model):
+    site_id = models.IntegerField()
+    site_name = models.CharField(max_length=120, null=False, blank=False)
+    
+    def __unicode__ (self):
+        return smart_unicode(self.site_name)
+    
+class Shipment(models.Model):
+    shipment_id  =  models.IntegerField()#INTEGER PRIMARY KEY,
+    prod_id = models.ForeignKey(Product, related_name='+')
+    rfid_id_start = models.IntegerField()
+    rfid_id_end = models.IntegerField()
+    site_from  = models.ForeignKey(Sites, related_name='+')
+    site_to  = models.ForeignKey(Sites, related_name='+')
+    time_sent = models.TimeField()
+    
+    def __unicode__ (self):
+        return smart_unicode('%s %s %s %s' % (self.shipment_id, self.product_id, self.rfid_id_start, self.rfid_id_end))
+    
+class ShipmentMonitor(models.Model):
+    ship_id = models.ForeignKey(Shipment, related_name='+')
+    timestamp = models.TimeField()
+    temp  = models.IntegerField()
+    loclong = models.FloatField()
+    loclang = models.FloatField()
+    leg_course = models.IntegerField()
+    
+    
+    
+    
+    
+    
