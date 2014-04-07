@@ -9,7 +9,7 @@ from django.core.context_processors import csrf
 
 # Create your views here.
 
-from .forms import SignUpForm, CreateForm #, GPSWidget
+from .forms import SignUpForm, ProdugtForm, SitesForm, ShipmentForm
 from .dbwork import *
 
 def home(request):
@@ -33,14 +33,34 @@ def home(request):
 
 def create(request):
     
-    form1 = CreateForm(request.POST or None)
+    form = ShipmentForm(request.POST or None)
     
-    if form1.is_valid():
-        save_it = form1.save(commit=False)
+    if form.is_valid():
+        save_it = form.save(commit=False)
         save_it.save()
         
         
-    return render_to_response("create.html")
+    return render_to_response("create.html", locals(), context_instance=RequestContext(request))
+
+def cities(request):
+    form = SitesForm(request.POST or None)
+    
+    if form.is_valid():
+        save_it = form.save(commit=False)
+        save_it.save()
+        
+        
+    return render_to_response("cities.html", locals(), context_instance=RequestContext(request))
+
+def product(request):
+    form = ProdugtForm(request.POST or None)
+    
+    if form.is_valid():
+        save_it = form.save(commit=False)
+        save_it.save()
+        
+        
+    return render_to_response("product.html", locals(), context_instance=RequestContext(request))    
 
 def thankyou(request):
     return render_to_response("thankyou.html", locals(), context_instance=RequestContext(request))
@@ -62,8 +82,6 @@ def login(request):
     c.update(csrf(request))
     return render_to_response('login.html', c)
 
-
-    
 
 def auth_view(request):
     username = request.POST.get('username', '')

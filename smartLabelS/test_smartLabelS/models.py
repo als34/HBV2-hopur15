@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.encoding import smart_unicode
 
 
+
 # Create your models here.
 
 class SignUp(models.Model):
@@ -15,19 +16,6 @@ class SignUp(models.Model):
     def __unicode__ (self):
         return smart_unicode(self.email)
     
-    
-    
-class CreateF(models.Model):
-    shipment_nr = models.CharField(max_length= 30, null=False, blank=False)
-    first_nr = models.CharField(max_length = 30, null=False, blank = False)
-    quantity = models.CharField(max_length =10, null =False, blank = False)
-    timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
-    updated = models.DateTimeField(auto_now_add=False, auto_now=True)
-    
-    def __unicode__ (self):
-        return '%s %s %s ' % (self.shipment_nr, self.first_nr, self.quantity)
-    
-
 class Product(models.Model):
     product_id = models.IntegerField()
     product_name  = models.CharField(max_length=120, null=True, blank=True)
@@ -51,7 +39,7 @@ class Shipment(models.Model):
     rfid_id_end = models.IntegerField()
     site_from  = models.ForeignKey(Sites, related_name='+')
     site_to  = models.ForeignKey(Sites, related_name='+')
-    time_sent = models.TimeField()
+    #time_sent = models.TimeField('/%d/%m/%Y')
     
     def __unicode__ (self):
         return smart_unicode('%s %s %s %s' % (self.shipment_id, self.product_id, self.rfid_id_start, self.rfid_id_end))
