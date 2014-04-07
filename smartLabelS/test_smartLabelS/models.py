@@ -42,7 +42,7 @@ class Shipment(models.Model):
     time_sent = models.DateTimeField(auto_now_add=False, auto_now=True)
     
     def __unicode__ (self):
-        return smart_unicode('%s %s %s %s' % (self.shipment_id, self.prod_id, self.rfid_id_start, self.rfid_id_end))
+        return smart_unicode(str(self.shipment_id))
     
 class ShipmentMonitor(models.Model):
     ship_id = models.ForeignKey(Shipment, related_name='+')
@@ -53,7 +53,7 @@ class ShipmentMonitor(models.Model):
     leg_course = models.IntegerField()
     
     def __unicode__ (self):
-        return smart_unicode(self.timestamp)
+        return smart_unicode(str(self.timestamp))
     
     
     
