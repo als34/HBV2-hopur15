@@ -1,5 +1,5 @@
 from django import forms
-from .models import SignUp,  Product, Sites, Shipment
+from .models import SignUp,  Product, Sites, Shipment, ShipmentMonitor
 
 class SignUpForm(forms.ModelForm):
     class Meta:
@@ -16,3 +16,7 @@ class SitesForm(forms.ModelForm):
 class ShipmentForm(forms.ModelForm):
     class Meta:
         model = Shipment
+
+class ShipmentMonitorForm(forms.ModelForm):
+    class Meta:
+        model = ShipmentMonitor

@@ -9,7 +9,7 @@ from django.core.context_processors import csrf
 
 # Create your views here.
 
-from .forms import SignUpForm, ProdugtForm, SitesForm, ShipmentForm
+from .forms import SignUpForm, ProdugtForm, SitesForm, ShipmentForm, ShipmentMonitorForm
 from .dbwork import *
 
 def home(request):
@@ -41,6 +41,17 @@ def create(request):
         
         
     return render_to_response("create.html", locals(), context_instance=RequestContext(request))
+
+def monitor(request):
+    
+    form = ShipmentMonitorForm(request.POST or None)
+    
+    if form.is_valid():
+        save_it = form.save(commit=False)
+        save_it.save()
+        
+        
+    return render_to_response("monitor.html", locals(), context_instance=RequestContext(request))
 
 def cities(request):
     form = SitesForm(request.POST or None)
