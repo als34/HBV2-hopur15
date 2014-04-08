@@ -10,8 +10,8 @@ class SignUp(models.Model):
     first_name = models.CharField(max_length=120, null=True, blank=True)
     last_name = models.CharField(max_length=120, null=True, blank=True)
     email = models.EmailField(null=False, blank=False)
-    timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
-    updated = models.DateTimeField(auto_now_add=False, auto_now=True)
+    timestamp = models.DateTimeField(auto_now_add=True, auto_now=False, editable=True, blank=False)
+    updated = models.DateTimeField(auto_now_add=False, auto_now=True, editable=True, blank=False)
     
     def __unicode__ (self):
         return smart_unicode(self.email)
@@ -39,14 +39,14 @@ class Shipment(models.Model):
     rfid_id_end = models.IntegerField()
     site_from  = models.ForeignKey(Sites, related_name='+')
     site_to  = models.ForeignKey(Sites, related_name='+')
-    time_sent = models.DateTimeField(auto_now_add=False, auto_now=True)
+    time_sent = models.DateTimeField( editable=True, blank=False)
     
     def __unicode__ (self):
         return smart_unicode(str(self.shipment_id))
     
 class ShipmentMonitor(models.Model):
     ship_id = models.ForeignKey(Shipment, related_name='+')
-    timestamp = models.DateTimeField(auto_now_add=False, auto_now=True)
+    timestamp = models.DateTimeField(editable=True, blank=False)
     temp  = models.IntegerField()
     loclong = models.FloatField()
     loclang = models.FloatField()
