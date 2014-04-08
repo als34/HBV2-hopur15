@@ -11,7 +11,7 @@ class dbwork(object):
     classdocs
     '''
     def saekja(self):
-        self.cursor.execute("SELECT * FROM test_smartLabelS_shipment;")
+        self.cursor.execute("SELECT * FROM test_smartLabelS_shipmentmonitor;")
         data = self.cursor.fetchall()
         return str(data)
 
