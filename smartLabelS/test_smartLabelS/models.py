@@ -39,7 +39,8 @@ class Shipment(models.Model):
     rfid_id_end = models.IntegerField()
     site_from  = models.ForeignKey(Sites, related_name='+')
     site_to  = models.ForeignKey(Sites, related_name='+')
-    time_sent = models.DateTimeField( editable=True, blank=False)
+    #time_sent = models.DateTimeField( editable=True, blank=False)
+    time_sent = models.DateTimeField( auto_now_add=False, auto_now=True, editable=True, blank=False)
     
     def __unicode__ (self):
         return smart_unicode(str(self.shipment_id))

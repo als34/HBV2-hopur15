@@ -11,6 +11,7 @@ from django.core.context_processors import csrf
 
 from .forms import SignUpForm, ProdugtForm, SitesForm, ShipmentForm, ShipmentMonitorForm
 from .dbwork import *
+from .models import Shipment
 
 def home(request):
     
@@ -116,6 +117,6 @@ def logout(request):
     return render_to_response('logout.html')
 
 def choose(request):
-    return render_to_response("choose.html")
+    return render_to_response("choose.html", {'lines': Shipment.objects.all()})
 
 

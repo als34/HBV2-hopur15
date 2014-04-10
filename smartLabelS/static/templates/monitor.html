@@ -4,9 +4,9 @@
 {% block content %}
 <h2>Stofna ferd</h2>
 	<form method ="post"> {% csrf_token %}
-		<ul>
-			{{form.as_ul}}
-		</ul>
+		
+			{{form.as_table}}
+		
 		<input type="submit" class='btn btn-success btn-lg' name="submit" value"Create">
 	</form>
 {% endblock %}
