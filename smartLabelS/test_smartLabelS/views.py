@@ -90,10 +90,13 @@ def testmap(request):
     #db = dbwork()
     #test_path = db.saekja()
     
-    breita =request.POST.get('chose','') 
-    milli = str(breita)
-    return render_to_response("testmap.html", {'lines' : ShipmentMonitor.objects.filter(ship_id__exact=milli) }, context_instance=RequestContext(request) )
-
+    #breita =request.POST.get('chose','') 
+    #milli = str(breita)
+    breita =str(request.POST.get('ship')) 
+    return render_to_response("testmap.html", {'lines' : ShipmentMonitor.objects.filter(ship_id__exact=breita) }, context_instance=RequestContext(request) )
+    #return render_to_response("testmap.html", {'breita':breita})
+     
+     
 def learnmore(request):
     return render_to_response("learnmore.html", locals(), context_instance=RequestContext(request))
 

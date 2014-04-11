@@ -2,8 +2,8 @@
 
 {% block content %}
 <h2>Select shipment:</h2>
-<form action="/testmap/" method= "POST">{% csrf_token %}
-	<select>
+<form action="/testmap/ " method= "post">{% csrf_token %}
+	<select id="ship" name="ship">
 		{% for line in lines %}
 		<option name="chose" value ="{{ line.shipment_id }}">{{ line.site_to }}</option>
 		{% endfor %}
