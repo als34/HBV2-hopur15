@@ -6,12 +6,19 @@ from django.shortcuts import render, render_to_response, RequestContext, HttpRes
 from django.core.urlresolvers import reverse
 from django.contrib import auth
 from django.core.context_processors import csrf
-
+from django.template.defaultfilters import stringfilter
+from django import template
 # Create your views here.
 
 from .forms import SignUpForm, ProdugtForm, SitesForm, ShipmentForm, ShipmentMonitorForm
 from .dbwork import *
-from .models import Shipment
+from .models import Shipment, ShipmentMonitor
+
+register = template.Library()
+@register.filter
+@stringfilter
+def int_to_string(value):
+    return value
 
 def home(request):
     
@@ -80,10 +87,12 @@ def thankyou(request):
 def testmap(request):
     #gpswidget = GPSWidget(request.POST or None)
     #test_path = "new google.maps.LatLng(37.772323, -122.214897),    new google.maps.LatLng(21.291982, -157.821856),    new google.maps.LatLng(-18.142599, 178.431),    new google.maps.LatLng(-27.46758, 153.027892)"
-    db = dbwork()
-    test_path = db.saekja()
+    #db = dbwork()
+    #test_path = db.saekja()
     
-    return render_to_response("testmap.html", {'test_path' : test_path} )
+    breita =request.POST.get('chose','') 
+    milli = str(breita)
+    return render_to_response("testmap.html", {'lines' : ShipmentMonitor.objects.filter(ship_id__exact=milli) }, context_instance=RequestContext(request) )
 
 def learnmore(request):
     return render_to_response("learnmore.html", locals(), context_instance=RequestContext(request))
@@ -116,6 +125,6 @@ def logout(request):
     return render_to_response('logout.html')
 
 def choose(request):
-    return render_to_response("choose.html", {'lines': Shipment.objects.all()})
+    return render(request, "choose.html", {'lines': Shipment.objects.all()})
 
 
